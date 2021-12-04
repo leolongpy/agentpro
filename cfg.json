@@ -1,0 +1,32 @@
+{
+  "debug": true,
+  "pid": "agentx.pid",
+  "logfile": "agentx.log",
+  "heartbeat": {
+    "enabled": true,
+    "interval": 5
+  },
+  "transfer": {
+    "enabled": true,
+    "addrs": [
+      "127.0.0.1:8433"
+    ],
+    "interval": 60,
+    "timeout": 1000
+  },
+  "registrar": {
+    "enabled": true,
+    "addrs": [
+      "0.0.0.0:2379"
+    ]
+  },
+  "http": {
+    "listen": ":8080"
+  },
+  "collector": {
+    "ifacePrefix": [
+      "eth",
+      "em"
+    ]
+  }
+}
