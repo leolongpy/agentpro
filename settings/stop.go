@@ -47,7 +47,7 @@ func StopHandle() {
 		}
 		os.Remove(Config().Pid)
 		p_info, _ := processInfo(ProcessID)
-		if strings.Contains(p_info, "agent_osx") && err == nil {
+		if strings.Contains(p_info, "agentx_linux") && err == nil {
 			logger.StartupInfo("正在停止Agent进程", ProcessID)
 			err = process.Kill()
 			if err != nil {
