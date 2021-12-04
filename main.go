@@ -1,6 +1,7 @@
 package main
 
 import (
+	"agentpro/cron"
 	"agentpro/http"
 	"agentpro/logger"
 	"agentpro/metrics"
@@ -34,6 +35,8 @@ func main() {
 	settings.LoadConfiguration()
 	settings.InitLocalIp()
 	metrics.BuildMappers()
+	go cron.InitDataHistory()
+	cron.Collect()
 	if strings.ToLower(os.Args[1]) == "main" {
 		go func() {
 			goHttp.ListenAndServe("0.0.0.0:16060", nil)
