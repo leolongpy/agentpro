@@ -2,6 +2,7 @@ package main
 
 import (
 	"agentpro/cron"
+	"agentpro/heartbeat"
 	"agentpro/http"
 	"agentpro/logger"
 	"agentpro/metrics"
@@ -35,6 +36,10 @@ func main() {
 	settings.LoadConfiguration()
 	settings.InitLocalIp()
 	metrics.BuildMappers()
+
+	cron.GetAllTask()
+	cron.InitWatchTask()
+	heartbeat.AgentHealthChecks()
 	go cron.InitDataHistory()
 	cron.Collect()
 	if strings.ToLower(os.Args[1]) == "main" {
