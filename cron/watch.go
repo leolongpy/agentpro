@@ -9,7 +9,6 @@ import (
 	jsoniter "github.com/json-iterator/go"
 	Cron "github.com/robfig/cron/v3"
 	"go.etcd.io/etcd/clientv3"
-	"go.etcd.io/etcd/mvcc/mvccpb"
 )
 
 const (
@@ -75,7 +74,7 @@ func handleKeyChangeEvent(event *clientv3.Event, events chan *KeyChangeEvent) {
 
 	switch event.Type {
 
-	case mvccpb2.Event_EventType(mvccpb.PUT):
+	case mvccpb2.PUT:
 		mapTaskInfo := make(map[string]interface{})
 		var json = jsoniter.ConfigCompatibleWithStandardLibrary
 		if event.IsCreate() {
